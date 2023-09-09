@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class Principal {
     private static final Scanner s = new Scanner(System.in);
 
-    private static Pessoa headCriancas = new Pessoa();
-    private static Pessoa headAdolescentes = new Pessoa();
-    private static Pessoa headJovems = new Pessoa();
-    private static Pessoa headAdultos = new Pessoa();
-    private static Pessoa headIdosos = new Pessoa();
+    private static final Pessoa headCriancas = new Pessoa();
+    private static final Pessoa headAdolescentes = new Pessoa();
+    private static final Pessoa headJovems = new Pessoa();
+    private static final Pessoa headAdultos = new Pessoa();
+    private static final Pessoa headIdosos = new Pessoa();
 
     public static void main(String[] args) {
         String nome;
