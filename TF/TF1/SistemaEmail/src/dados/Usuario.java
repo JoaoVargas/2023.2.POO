@@ -15,7 +15,14 @@ public class Usuario {
     private LinkedList<Email> emailsRecebidos;
     private LinkedList<Email> emailsEnviados;
 
-    private final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+    private final MessageDigest digest;
+    {
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public int getIdUsuario() {
         return idUsuario;
@@ -29,7 +36,7 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setSenha(String senha) throws NoSuchAlgorithmException {
+    public void setSenha(String senha){
         this.senha = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
     }
     public String getNome() {
@@ -45,7 +52,7 @@ public class Usuario {
         return emailsEnviados;
     }
 
-    public Usuario() throws NoSuchAlgorithmException {
+    public Usuario() {
         this.emailsRecebidos = new LinkedList<Email>();
         this.emailsEnviados = new LinkedList<Email>();
     }
@@ -84,7 +91,7 @@ public class Usuario {
     public String listarEmailsEnviados() {
         String emails = "";
 
-        for (Email email : emailsRecebidos) {
+        for (Email email : emailsEnviados) {
             emails += email.toStringResumido() + "\n";
         }
 

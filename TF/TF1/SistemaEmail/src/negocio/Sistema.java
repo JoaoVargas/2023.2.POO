@@ -21,6 +21,12 @@ public class Sistema {
     public LinkedList<Usuario> getListaUsuarios() {
         return listaUsuarios;
     }
+    public boolean getUsuarioLogado(){
+        return usuarioLogado != null;
+    }
+    public void setUsuarioLogado(Usuario u){
+        this.usuarioLogado = u;
+    }
 
     public Sistema() {
         this.numUsuarios = 0;
@@ -89,19 +95,43 @@ public class Sistema {
 
         return usuarioLogado.listarEmailsEnviados();
     }
+    public String verEmailDetalhes(int id, int tipo) {
+        if (this.usuarioLogado == null){
+            return "Erro usuario não logado.";
+        }
 
-    public boolean enviarEmail(Email e){
+        if (tipo == 1){
+            for (Email email : usuarioLogado.getEmailsEnviados()) {
+                if (id == email.getIdEmail()){
+                    return email.toString();
+                }
+            }
+        } else if (tipo == 2) {
+            for (Email email : usuarioLogado.getEmailsRecebidos()) {
+                if (id == email.getIdEmail()){
+                    return email.toString();
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public boolean enviarEmail(Email email){
         if (this.usuarioLogado == null || this.numUsuarios < 2){
             return false;
         }
 
-        for (Usuario u : listaUsuarios) {
-            if (Objects.equals(e.getDestinatario(), u.getEmail())){
+        for (Usuario desti : listaUsuarios) {
+            if (Objects.equals(email.getDestinatario(), desti.getEmail()) && !Objects.equals(email.getDestinatario(), this.usuarioLogado.getEmail())){
                 try {
-                    e.setIdEmail(this.numEmails);
+                    email.setIdEmail(this.numEmails);
+                    email.setRemetente(this.usuarioLogado.getEmail());
+
+                    this.usuarioLogado.emailEnviado(email);
+                    desti.emailRecebido(email);
                     this.numEmails++;
-                    u.emailRecebido(e);
-                    this.usuarioLogado.emailEnviado(e);
+
                     return true;
                 } catch (Exception err) {
                     return false;
@@ -130,18 +160,18 @@ public class Sistema {
             return false;
         }
 
-        for (Email e : usuarioLogado.getEmailsRecebidos()) {
+        for (Email e : this.usuarioLogado.getEmailsRecebidos()) {
             if (e.getIdEmail() == id){
                 try {
-                    resposta.setIdEmail(this.numEmails);
-                    this.numEmails++;
+                    resposta.setEmailAnterior(e);
+                    resposta.setDestinatario(e.getRemetente());
 
-                    usuarioLogado.emailEnviado(resposta)
+                    return enviarEmail(resposta);
+                } catch (Exception err) {
+                    return false;
                 }
             }
         }
-//        TO AQUI
-
         return false;
     }
 

@@ -45,8 +45,8 @@ public class Email {
     public LocalDateTime getDataHora() {
         return dataHora;
     }
-    public void setDataHora(LocalDateTime dataHora) {
-        this.dataHora = dataHora;
+    public void setDataHora() {
+        this.dataHora = LocalDateTime.now();
     }
     public Email getEmailAnterior() {
         return emailAnterior;
@@ -55,8 +55,7 @@ public class Email {
         this.emailAnterior = emailAnterior;
     }
 
-    public Email(int id) {
-        this.idEmail = id;
+    public Email() {
         this.emailAnterior = null;
     }
 
@@ -81,8 +80,7 @@ public class Email {
 
     public String toStringResumido() {
         return """
-                [%s] %s | %s
-                """.formatted(this.idEmail, (this.dataHora), this.assunto);
+                [%s] %s | %s""".formatted(this.idEmail, formatarDataTime(this.dataHora), this.assunto);
     }
 
     public String formatarDataTime(LocalDateTime d){
