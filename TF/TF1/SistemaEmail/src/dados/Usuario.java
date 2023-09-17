@@ -24,9 +24,6 @@ public class Usuario {
         }
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
@@ -38,9 +35,6 @@ public class Usuario {
     }
     public void setSenha(String senha){
         this.senha = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
-    }
-    public String getNome() {
-        return nome;
     }
     public void setNome(String nome) {
         this.nome = nome;

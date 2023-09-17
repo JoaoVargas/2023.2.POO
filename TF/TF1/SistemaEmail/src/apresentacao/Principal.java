@@ -22,6 +22,7 @@ public class Principal {
     private static final int LOGAR = 7;
     private static final int ABRIR = 7;
 
+
     public static void main(String[] args) {
         int op = -1;
         int tipoCaixaEntrada = RECEBIDOS;

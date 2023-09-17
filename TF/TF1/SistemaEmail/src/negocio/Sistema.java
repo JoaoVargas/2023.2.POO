@@ -12,20 +12,8 @@ public class Sistema {
 
     private LinkedList<Usuario> listaUsuarios;
 
-    public int getNumUsuarios() {
-        return numUsuarios;
-    }
-    public int getNumEmails() {
-        return numEmails;
-    }
-    public LinkedList<Usuario> getListaUsuarios() {
-        return listaUsuarios;
-    }
     public boolean getUsuarioLogado(){
         return usuarioLogado != null;
-    }
-    public void setUsuarioLogado(Usuario u){
-        this.usuarioLogado = u;
     }
 
     public Sistema() {
@@ -127,6 +115,7 @@ public class Sistema {
                 try {
                     email.setIdEmail(this.numEmails);
                     email.setRemetente(this.usuarioLogado.getEmail());
+                    email.cifrar(0);
 
                     this.usuarioLogado.emailEnviado(email);
                     desti.emailRecebido(email);
