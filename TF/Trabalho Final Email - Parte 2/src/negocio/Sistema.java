@@ -2,7 +2,9 @@ package negocio;
 
 import dados.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 public class Sistema {
@@ -69,20 +71,38 @@ public class Sistema {
         }
     }
 
-    public String verEmailsRecebidos() {
+    public List<String> verEmailsRecebidosResumo() {
         if (this.usuarioLogado == null){
-            return "Erro usuario não logado.";
+            return null;
         }
 
         return usuarioLogado.listarEmailsRecebidos();
     }
-    public String verEmailsEnviados() {
+
+    public List<Email> verEmailsRecebidosLista() {
         if (this.usuarioLogado == null){
-            return "Erro usuario não logado.";
+            return new ArrayList<>();
+        }
+
+        return usuarioLogado.getEmailsRecebidos();
+    }
+
+    public List<String> verEmailsEnviadosResumo() {
+        if (this.usuarioLogado == null){
+            return new ArrayList<>();
         }
 
         return usuarioLogado.listarEmailsEnviados();
     }
+
+    public List<Email> verEmailsEnviadosLista() {
+        if (this.usuarioLogado == null){
+            return null;
+        }
+
+        return usuarioLogado.getEmailsEnviados();
+    }
+
     public String verEmailDetalhes(int id, int tipo) {
         if (this.usuarioLogado == null){
             return "Erro usuario não logado.";

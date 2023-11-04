@@ -3,8 +3,10 @@ package dados;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Usuario {
     private int idUsuario;
@@ -73,20 +75,21 @@ public class Usuario {
         }
     }
 
-    public String listarEmailsRecebidos() {
-        String emails = "";
+    public List<String> listarEmailsRecebidos() {
+        List<String> emails = new ArrayList<>();
 
         for (Email email : emailsRecebidos) {
-            emails += email.toStringResumido() + "\n";
+            emails.add(email.toStringResumido());
         }
 
         return emails;
     }
-    public String listarEmailsEnviados() {
-        String emails = "";
+
+    public List<String> listarEmailsEnviados() {
+        List<String> emails = new ArrayList<>();
 
         for (Email email : emailsEnviados) {
-            emails += email.toStringResumido() + "\n";
+            emails.add(email.toStringResumido());
         }
 
         return emails;
