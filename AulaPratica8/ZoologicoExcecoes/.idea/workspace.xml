@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="df589cc7-15ad-4653-b5fa-af05786ff971" name="Changes" comment="" />
+    <list default="true" id="df589cc7-15ad-4653-b5fa-af05786ff971" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +34,10 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/jotausr/Projetos/UDESC/2023.2.POO/AulaPratica8/PersistenciaListaTelefonica",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   }
@@ -48,6 +57,9 @@
       <updated>1698351806127</updated>
       <workItem from="1698351807161" duration="99000" />
       <workItem from="1700592642915" duration="38000" />
+      <workItem from="1701030424886" duration="55000" />
+      <workItem from="1701030838312" duration="19000" />
+      <workItem from="1701047916544" duration="1635000" />
     </task>
     <servers />
   </component>
